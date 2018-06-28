@@ -40,16 +40,17 @@ def gen_tags_all():
 
             # segment = HanLP.newSegment().enableAllNamedEntityRecognize(True)
             # term_list = segment.seg(article)
-            # # print(term_list)
-            # ners = []
-            # pos_list = ["nr", "nrj", "nrf", "nr1", "nr2",
-            #             # "ns", "nsf",
-            #             # "nt", "ntc", "ntcf", "ntcb", "ntch", "nto", "ntu", "nts", "nth"
-            #             ]
-            # for term in term_list:
-            #     if str(term.nature) in pos_list and len(ners) < 2:
-            #         ners.append(term.word)
-            #         tags.append(term.word)
+            term_list = HanLP.segment(article)
+            # print(term_list)
+            ners = []
+            pos_list = ["nr", "nrj", "nrf", "nr1", "nr2",
+                        # "ns", "nsf",
+                        # "nt", "ntc", "ntcf", "ntcb", "ntch", "nto", "ntu", "nts", "nth"
+                        ]
+            for term in term_list:
+                if str(term.nature) in pos_list and len(ners) < 2:
+                    ners.append(term.word)
+                    tags.append(term.word)
             print(tags)
             for tag in tags:
                 fw.write(tag + ',')
